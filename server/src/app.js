@@ -3,6 +3,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
+const authRoutes = require("./routes/auth.routes");
+
 const app = express();
 
 // middleware
@@ -11,7 +13,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
-// test route
+// routes
+app.use("/api/v1/auth", authRoutes);
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
