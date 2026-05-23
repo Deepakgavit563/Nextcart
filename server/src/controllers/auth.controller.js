@@ -89,13 +89,30 @@ exports.loginUser = async (req, res) => {
         role: user.role,
       },
     });
-  } catch (error) {
-  console.log(error);
 
-  res.status(500).json({
-    success: false,
-    message: error.message,
-    stack: error.stack,
-  });
-}
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      stack: error.stack,
+    });
+  }
+}; // <-- THIS WAS MISSING
+
+
+// GET ME
+exports.getMe = async (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      user: req.user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
