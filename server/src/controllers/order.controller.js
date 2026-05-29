@@ -8,7 +8,6 @@ exports.createOrder = async (req, res) => {
     const {
       shippingInfo,
       orderItems,
-      paymentInfo,
       itemsPrice,
       taxPrice,
       shippingPrice,
@@ -18,12 +17,19 @@ exports.createOrder = async (req, res) => {
     const order = await Order.create({
       shippingInfo,
       orderItems,
-      paymentInfo,
+
+      paymentInfo: {
+        id: `PAY_${Date.now()}`,
+        status: "Paid",
+      },
+
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
+
       paidAt: Date.now(),
+
       user: req.user._id,
     });
 
