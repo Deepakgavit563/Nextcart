@@ -1,6 +1,6 @@
 const Product = require("../models/product.model");
 const APIFeatures = require("../utils/apiFeatures");
-
+const asyncHandler = require("../middleware/async.middleware");
 // CREATE PRODUCT
 exports.createProduct = async (req, res) => {
   try {
@@ -22,7 +22,7 @@ exports.createProduct = async (req, res) => {
 
 
 // GET ALL PRODUCTS
-exports.getProducts = async (req, res) => {
+exports.getProducts = asyncHandler(async (req, res) => {
   try {
     const resultPerPage = 8;
 
@@ -48,7 +48,7 @@ exports.getProducts = async (req, res) => {
       message: error.message,
     });
   }
-};
+});
 
 
 // GET SINGLE PRODUCT
@@ -57,10 +57,7 @@ exports.getSingleProduct = async (req, res) => {
     const product = await Product.findById(req.params.id);
 
     if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found",
-      });
+      return next(new ErrorHandler("Product not found", 404));
     }
 
     res.status(200).json({
