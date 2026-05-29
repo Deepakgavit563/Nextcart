@@ -1,5 +1,10 @@
 # dependencies
 node_modules
+.env
+dist
+build
+coverage
+.DS_Store
 
 # environment variables
 .env
