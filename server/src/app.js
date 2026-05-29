@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const mongoSanitize = require("express-mongo-sanitize");
+
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const compression = require("compression");
@@ -30,11 +30,8 @@ app.use(
   })
 );
 
-app.use(mongoSanitize());
 
-app.use(xss());
 
-app.use(hpp());
 
 app.use(compression());
 
