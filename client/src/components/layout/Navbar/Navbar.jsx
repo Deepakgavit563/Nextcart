@@ -1,32 +1,38 @@
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
-
-
+import CartButton from "./CartButton";
+import UserButton from "./UserButton";
 const Navbar = () => {
 
   return (
     <header className="border-b bg-white">
 
-      <div className="
-      max-w-7xl
-      mx-auto
-      px-6
-      h-20
-      flex
-      items-center
-      gap-8
-      ">
+  <div
+    className="
+    max-w-7xl
+    mx-auto
+    px-6
+    h-20
+    flex
+    items-center
+    gap-8
+    "
+  >
 
-        <Logo />
+    <Logo />
 
-        <SearchBar />
+    <SearchBar />
 
-        <NavLinks />
+    <NavLinks />
 
-      </div>
+    <CartButton />
 
-    </header>
+    <UserButton />
+
+  </div>
+
+</header>
   );
 };
 
