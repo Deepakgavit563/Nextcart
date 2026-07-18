@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           path="/register"
           element={<RegisterPage />}
         />
+        <Route path="/products" element={<ProductsPage />} />
       </Routes>
     </BrowserRouter>
   );
